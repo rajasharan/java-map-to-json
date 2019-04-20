@@ -1,0 +1,38 @@
+{
+  "name": "java-map-json",
+  "version": "1.0.0",
+  "description": "pretty print java map in json",
+  "main": "index.js",
+  "scripts": {
+    "build-babel": "babel index.js --out-file index_compiled.js",
+    "build-browserify": "browserify app.js > app_bundle.js",
+    "build-copy": "cp app_bundle.js site/bundle.js && cp index.html site/",
+    "clean": "rm index_compiled.js app_bundle.js",
+    "build": "npm run build-babel && npm run build-browserify && npm run build-copy && npm run clean",
+    "test": "echo \"N/A\""
+  },
+  "author": "rajasharan@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "arcsecond": "^1.3.0",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-transform-async-to-generator": "^7.4.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "browserify": "^16.2.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-async-to-generator",
+      "@babel/plugin-transform-modules-commonjs"
+    ]
+  }
+}

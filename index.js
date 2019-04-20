@@ -45,13 +45,13 @@ const TEST_MAP = 'XMODIFIERS=@im=ibus, MANDATORY_PATH=/us=r/sha,re/gconf/pop.m';
 const TEST_MAP_2 = ' { XMODIFIERS=@im=ibus, MANDATORY_PATH=/us=r/sha,re/gconf/pop.m } ';
 const log = console.log;
 
-const mapParser = sepBy (comma) (everythingUntil (commaEnd));
-const finalParser = between (start) (end) (mapParser);
-const mapToParser = (classic) => pipeParsers ([ finalParser, mapTo (x => x.map(classic? keyValueMapperClassic: keyValueMapperExact)) ]);
+const keyValueParser = sepBy (comma) (everythingUntil (commaEnd));
+const finalParser = between (start) (end) (keyValueParser);
+const mapperTo = (classic) => pipeParsers ([ finalParser, mapTo (x => x.map(classic? keyValueMapperClassic: keyValueMapperExact)) ]);
 
 function run(input_map, classic) {
     try {
-        var either = parse (mapToParser (classic)) (input_map);
+        var either = parse (mapperTo (classic)) (input_map);
         var data = toValue (either);
         return { err: null, data };
     } catch (err) {

@@ -10,6 +10,7 @@
     margin-right: 1.5rem;
     position: relative;
     border: 2px solid #f5f5f5;
+    max-height: 600px;
 }
 
 .bd-snippet-java {
@@ -43,6 +44,7 @@
     flex-direction: column;
     width: 50%;
     position: relative;
+    /*overflow: auto;*/
 }
 
 .bd-snippet-json::before {
@@ -103,7 +105,7 @@ code {
     color: #1bc1a1;
     font-size: 85%;
     margin: 0;
-    padding: .2em;
+    padding: 0.2em;
     font-family: Consolas,liberation mono,Menlo,Courier,monospace;
     flex-grow: 1;
 }

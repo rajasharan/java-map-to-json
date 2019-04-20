@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pretty print Java Maps</title>
+
+    <link rel="stylesheet" href="./vendor/bulma.min.css" />
+    <link rel="stylesheet" href="./snippet.css" />
+
+    <script src="./vendor/vue.min.js"></script>
+</head>
+<body>
+    <section class="hero is-dark is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Java Map to JSON converter</h1>
+                <h2 class="subtitle">so you can pretty print java maps</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="bd-snippet" id="app">
+        <div class="bd-snippet-java">
+            <textarea id="src" class="textarea" placeholder="paste Java's Map.toString() output here" rows="22" v-model="input"></textarea>
+        </div>
+
+        <div class="bd-snippet-json" v-bind:class="{ 'bd-is-hovering': isActive }">
+            <pre><code id="json" class="javascript">{{ output }}</code></pre>
+            <button class="button is-small bd-copy btn" data-clipboard-target="#json" @mouseover="isActive = true" @mouseleave="isActive = false">Copy</button>
+        </div>
+    </div>
+
+    <script src="./vendor/clipboard.min.js"></script>
+    <script>
+        new ClipboardJS('.btn');
+    </script>
+    <script src="./bundle.js"></script>
+</body>
+</html>
